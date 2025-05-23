@@ -25,7 +25,7 @@ const app = express()
 app.use(cors({
  origin: [
     "http://localhost:5173",                    
-    "https://newshuntt19.netlify.app/news"     
+    "https://newshuntt19.netlify.app"     
   ], 
   credentials: true               
 }));

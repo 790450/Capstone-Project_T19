@@ -8,7 +8,7 @@ const AlertHistory = () => {
   useEffect(() => {
     const fetchAlertHistory = async () => {
       try {
-        const res = await fetch(`/api/alert/history/${currentUser._id}`); 
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/alert/history/${currentUser._id}`); 
         const data = await res.json();
         if (res.ok) {
           setAlerts(data);

@@ -15,7 +15,7 @@ const tab = searchParams.get('tab');
 const dispatch = useDispatch()
 const handleSignout = async() =>{
     try {
-      const res = await fetch("/api/user/signout", {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/signout`, {
         method: "POST",
       })
 

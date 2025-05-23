@@ -10,7 +10,7 @@ const DashboardPersonalizedNews = () => {
   useEffect(() => {
     const fetchPersonalizedNews = async () => {
       try {
-        const res = await fetch(`/api/news/personalized/${currentUser._id}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/news/personalized/${currentUser._id}`);
         const data = await res.json();
 
         console.log("Personalized news response:", data);

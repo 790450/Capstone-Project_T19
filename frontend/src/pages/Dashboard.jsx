@@ -28,7 +28,7 @@ const Dashboard = () => {
     const fetchPreferences = async () => {
       if (tab === 'alerts' && currentUser?._id) {
         try {
-          const res = await fetch(`/api/alertsettings/${currentUser._id}`);
+          const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/alertsettings/${currentUser._id}`);
           const data = await res.json();
           if (res.ok) {
             setcurrentPreferences(data);
@@ -49,7 +49,7 @@ const Dashboard = () => {
 
   const savePreferences = async (preferences) => {
     try {
-      const res = await fetch(`/api/alertsettings/${currentUser._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/alertsettings/${currentUser._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -75,12 +75,13 @@ const DashboardProfile = () => {
         profilePicture,
       };
 
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/update/${currentUser._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(updatedProfile),
+        credentials: 'include',
       });
 
       const data = await res.json();
@@ -104,7 +105,7 @@ const DashboardProfile = () => {
     try {
       dispatch(deleteUserStart());
 
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/delete/${currentUser._id}`, {
         method: 'DELETE',
       });
 
@@ -122,7 +123,7 @@ const DashboardProfile = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch('/api/user/signout', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/signout`, {
         method: 'POST',
       });
 

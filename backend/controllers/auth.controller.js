@@ -41,6 +41,9 @@ export const signup = async (req, res, next) => {
   }
 };
 
+
+const isProduction = process.env.NODE_ENV === 'production';
+
 export const signin = async (req, res, next) =>{
   const {email, password} = req.body
 

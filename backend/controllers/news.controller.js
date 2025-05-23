@@ -7,7 +7,7 @@ export const getGeneralNews = async (req, res, next) => {
   const { category = 'general' } = req.query;
 
   try {
-    const response = await axios.get('https://newsapi.org/v2/top-headlines', {
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/news?category=${category}`, {
       params: {
         country: 'us',
         category,
@@ -41,7 +41,7 @@ export const getPersonalizedNews = async (req, res, next) => {
     const allArticles = [];
 
     for (const category of categories) {
-      const response = await axios.get('https://newsapi.org/v2/top-headlines', {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/news?category=${category}`, {
         params: {
           country: 'us',
           category,

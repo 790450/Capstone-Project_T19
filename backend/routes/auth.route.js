@@ -7,5 +7,9 @@ router.post("/signup", signup)
 router.post("/signin", signin)
 router.post("/", google)
 
+router.get("/signin", (req, res) => {
+  res.status(405).json({ message: "GET method not supported on /signin. Use POST." });
+})
+
 
 export default router

@@ -1,15 +1,19 @@
-export const fetchNews = async (category = 'General') => {
+export const fetchNews = async (category = 'general') => {
   try {
-    const res = await fetch(
-     `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`
+    const backendURL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 
-    )
+    const res = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/news?category=${category.toLowerCase()}`,
+      {
+        credentials: 'include', // if you use cookies or auth
+      }
+    );
 
     const data = await res.json();
-    console.log("API Response:", data);
+    console.log("API Response from backend:", data);
 
-    if (data.status === 'ok') {
-      return data.articles;
+    if (res.ok) {
+      return data.articles || [];
     } else {
       console.error("API Error:", data.message);
       return [];
